@@ -25,10 +25,6 @@ function ControlBar({ videoElement, children }) {
     }
   }
 
-  function handleKeyDown() {
-    handleTimeRange();
-  }
-
   function duration() {
     let dur = videoElement.current.querySelector("#video-player").duration;
     dur = dur.toFixed();
@@ -88,7 +84,6 @@ function ControlBar({ videoElement, children }) {
         value={currentTime}
         min={0}
         max={length}
-        keyCode={handleKeyDown}
       />
 
       {children}
