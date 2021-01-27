@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SvgMuteUnmute from "./SvgMuteUnmute";
 
 function Volume({ videoElement }) {
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState(0);
   const [muted, setMuted] = useState(false);
 
   function handleMute() {

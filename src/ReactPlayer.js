@@ -8,7 +8,7 @@ function ReactPlayer({ src }) {
 
   return (
     <div className="video-player-wrapper" ref={videoPlayer}>
-      <video id="video-player" width="500" height="auto">
+      <video id="video-player" width="500" height="auto" muted autoPlay>
         <source src={src} type="video/mp4" />
       </video>
 

@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import utils from "./utils";
 import SvgPlayPause from "./SvgPlayPause";
-import "./reactPlayer.css";
 
 function ControlBar({ videoElement, children }) {
-  const [paused, setPaused] = useState(true);
+  const [paused, setPaused] = useState(false);
   const [length, setLength] = useState(null);
   const [formattedLength, setFormattedLength] = useState(null);
   const [currentTime, setCurrentTime] = useState(null);
   const [formattedTime, setFormattedTime] = useState(null);
-
   function handlePlay() {
     duration();
     const videoPlayerElement = videoElement.current.querySelector(
@@ -25,6 +23,10 @@ function ControlBar({ videoElement, children }) {
       videoPlayerElement.pause();
       setPaused(true);
     }
+  }
+
+  function handleKeyDown() {
+    handleTimeRange();
   }
 
   function duration() {
@@ -84,9 +86,9 @@ function ControlBar({ videoElement, children }) {
         className="time-range"
         onChange={handleTimeRange}
         value={currentTime}
-        step={0.1}
         min={0}
         max={length}
+        keyCode={handleKeyDown}
       />
 
       {children}
